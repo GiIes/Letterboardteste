@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letterboard</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="img/behelit.ico">
+</head>
+
+<body>
+    <header>
+        <h2 class="logo"> </h2>
+        <nav class="navigation">
+            <a href="series.html">Séries</a>
+            <a href="animes.html">Animes</a>
+            <a href="jogos.html">Jogos</a>
+            <button class="btnlogin-popup">Login</button>
+        </nav>
+    </header>
+
+    <div class="formulario">
+        <div class="form-box Login">
+            <h1>Login</h1>
+            <form action="#" id="login-form">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" required>
+                    <label>E-Mail</label>
+                </div>
+                <br>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="key"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Senha</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Lembrar </label>
+                    <a href="Esqueci minha senha">Esqueci minha senha</a>
+                </div>
+                <button class="botaologin" onclick="logar(event)">Login</button>
+                <div class="linkregistro">
+                    <p>Quero me registrar! <a href="#" class="linkregistro">Criar conta</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var seriesData = [
+            { nome: "Série 1", genero: "Drama" },
+            { nome: "Série 2", genero: "Comédia" },
+            { nome: "Série 3", genero: "Ação" }
+        ];
+
+        function exibirSeries() {
+            var seriesList = document.querySelector("#series");
+            var ul = document.createElement("ul");
+
+            seriesData.forEach(function (serie) {
+                var li = document.createElement("li");
+                li.textContent = serie.nome + " (" + serie.genero + ")";
+                ul.appendChild(li);
+            });
+
+            seriesList.appendChild(ul);
+        }
+
+        window.onload = exibirSeries;
+
+        function logar(e) {
+            e.preventDefault();
+            var Login = document.querySelector('input[type="email"]').value;
+            var Senha = document.querySelector('input[type="password"]').value;
+            if (Login === "admin" && Senha === 'admin') {
+                alert('Sucesso');
+                location.href = 'home.html';
+            } else {
+                alert('Erro');
+            }
+        }
+    </script>
+</body>
+
+</html>
